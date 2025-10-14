@@ -7,7 +7,7 @@ Rectangle {
 
     width: parent.width
     height: parent.height
-    // x: parent.width
+    x: parent.width
 
     color: "whitesmoke"
 
@@ -28,10 +28,18 @@ Rectangle {
                 width: parent.width / 3
                 height: parent.width / 3 
                 border.color: "white"
+                Image {
+                    source: "qrc:/resources/head-"+ index+".jpg"
+                    width: parent.width
+                    height: parent.height
+                    fillMode: Image.PreserveAspectCrop
+                    clip: true
+                }
             }
         }
     }
 
+    // button controls
     Row {
         id: controls
         width: parent.width
@@ -48,7 +56,6 @@ Rectangle {
             onClicked: {
                 patientListView.x = 0
                 scanView.x = scanView.width
-                isScanning = true
             }
         }
         Button {
@@ -76,15 +83,13 @@ Rectangle {
     ListView {
         id: listView
         anchors.top: controls.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: 10
         width: parent.width
         height: (parent.height - imageView.height) / 2
-            orientation: ListView.Horizontal
-        model: 5
-        delegate: Rectangle {
-            height: listView.height
-            width: listView.height * 2
-            color: Material.color(Material.BlueGrey)
-            border.color: "black"
-        }
+        orientation: ListView.Horizontal
+        spacing: 10
+        model: SequenceModel {}
+        delegate: SequenceDelegate {}
     }
 }

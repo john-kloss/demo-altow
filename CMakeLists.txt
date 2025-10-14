@@ -22,6 +22,8 @@ qt_add_qml_module(appdemo_altow
         patientList/PatientModel.qml
         patientList/PatientDelegate.qml
         scan/ScanView.qml
+        scan/SequenceModel.qml
+        scan/SequenceDelegate.qml
 )
 
 qt_add_resources(appdemo_altow "resources"
@@ -40,6 +42,10 @@ qt_add_resources(appdemo_altow "resources"
         resources/play.svg
         resources/pause.svg
         resources/settings.svg
+
+        resources/head-0.jpg
+        resources/head-1.jpg
+        resources/head-2.jpg
 )
 
 set_target_properties(appdemo_altow PROPERTIES
