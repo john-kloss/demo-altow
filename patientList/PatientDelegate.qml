@@ -46,6 +46,7 @@ Rectangle {
                 Button {
                     icon.name: "edit-delete"
                     onClicked: patientList.model.remove(index) 
+                    flat: true
                 }
                 Button {
                     icon.source: "qrc:/resources/upload.svg"
@@ -53,6 +54,7 @@ Rectangle {
                         uploadAnimation.visible = true
                         uploadAnimation.start()
                     }
+                    flat: true
                 }
                 Button {
                     icon.source: "qrc:/resources/add-image.svg"
@@ -60,6 +62,7 @@ Rectangle {
                         patientListView.x = -patientListView.width
                         scanView.x = 0
                     }
+                    flat: true
                 }
             }
         }

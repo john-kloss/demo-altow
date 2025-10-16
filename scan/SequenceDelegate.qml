@@ -7,7 +7,7 @@ DropArea {
     required property string name
     required property int duration
     // enabled: !mouseArea.containsPress
-    height: listView.height
+    height: listView.height - 10
     width: listView.height * 2
     onEntered: (drag) => {
         if (index != drag.source.index) {

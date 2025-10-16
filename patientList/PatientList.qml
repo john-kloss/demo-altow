@@ -34,17 +34,15 @@ Rectangle {
             text: "Neuer Eintrag"
             font.pixelSize: 25
             icon.source: "qrc:/resources/add.svg"
-            onPressedChanged: () => { pressed ? background.opacity = 0.8 : background.opacity = 0.5 }
+            icon.color: "white"
             onClicked: {
                 patientList.model.append({"name":"-", "status":"Geplant", "age":5})
                 successAnimation.start()
             }
-            background: Rectangle {
-                id: background
-                color: "blue"
-                opacity: 0.5
-                radius: 3
-            }
+            Material.roundedScale: Material.ExtraSmallScale
+            Material.background: Material.color(Material.DeepPurple)
+            Material.foreground: "white"
+
             Item {
                 anchors.centerIn: parent
                 z: parent.z + 1
@@ -66,7 +64,6 @@ Rectangle {
         id: patientList
         height: parent.height - 60
         width: parent.width - 150
-        // anchors.centerIn: parent
         anchors.top: top.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         model: PatientModel {}
@@ -89,7 +86,6 @@ Rectangle {
             height: 50
             radius: 5
             color: "transparent"
-            // anchors.bottomMargin: 10
             RowLayout {
                 width: parent.width
                 height: parent.height
@@ -121,7 +117,10 @@ Rectangle {
                     (patientList.contentY < -patientList.headerItem.height)
                 StateChangeScript {
                     name: "funDownRefresh"
-                    script: loadingAnimation.start();
+                    script: {
+                        loadingAnimation.start();
+                        patientList.model.append({"name": "Mattheo Arndt", "age": 4, "status": "Geplant"})
+                    }
                 }
             }
         ]

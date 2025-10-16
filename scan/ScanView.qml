@@ -23,22 +23,16 @@ Rectangle {
         width: parent.width
         Repeater {
             model: 3
-            delegate: Rectangle {
-                color: "grey"
-                width: parent.width / 3
-                height: parent.width / 3 
-                border.color: "white"
-                Image {
-                    source: "qrc:/resources/head-"+ index+".jpg"
-                    width: parent.width
-                    height: parent.height
+            delegate: Image {
+                    width: parent.width / 3
+                    height: parent.width / 3 
+                    source: "qrc:/resources/head-" + index + ".jpg"
                     fillMode: Image.PreserveAspectCrop
                     clip: true
-                }
             }
         }
     }
-
+    
     // button controls
     Row {
         id: controls
@@ -63,7 +57,7 @@ Rectangle {
             icon.source:  isScanning ? "qrc:/resources/pause.svg" : "qrc:/resources/play.svg"
             icon.width: height / 3
             icon.height: height / 3
-            height: parent.height/2
+            height: parent.height / 2
             width: height
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
