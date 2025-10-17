@@ -1,9 +1,12 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "patientList/patientlist.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<PatientList>("Medical", 1, 0, "PatientListModel");
 
     QQmlApplicationEngine engine;
     QObject::connect(

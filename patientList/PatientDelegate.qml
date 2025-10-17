@@ -10,6 +10,11 @@ Rectangle {
     radius: 5
     border.color: "grey"
 
+    required property int index
+    required property string name
+    required property int age
+    required property string status
+
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -45,7 +50,7 @@ Rectangle {
                 Layout.alignment: Qt.AlignHCenter
                 Button {
                     icon.name: "edit-delete"
-                    onClicked: patientList.model.remove(index) 
+                    onClicked: patientList.model.removePatient(index) 
                     flat: true
                 }
                 Button {

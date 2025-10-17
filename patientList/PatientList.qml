@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import Qt.labs.lottieqt 
+import Medical 1.0
 
 // background of patient record view
 Rectangle {
@@ -36,7 +37,7 @@ Rectangle {
             icon.source: "qrc:/resources/add.svg"
             icon.color: "white"
             onClicked: {
-                patientList.model.append({"name":"-", "status":"Geplant", "age":5})
+                patientList.model.addPatient("-", 0, "Geplant")
                 successAnimation.start()
             }
             Material.roundedScale: Material.ExtraSmallScale
@@ -66,7 +67,7 @@ Rectangle {
         width: parent.width - 150
         anchors.top: top.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        model: PatientModel {}
+        model: PatientListModel {}
         spacing: 10
 
         add: Transition {
@@ -119,7 +120,8 @@ Rectangle {
                     name: "funDownRefresh"
                     script: {
                         loadingAnimation.start();
-                        patientList.model.append({"name": "Mattheo Arndt", "age": 4, "status": "Geplant"})
+                        patientList.model.addPatient("Mattheo Arndt", 4, "Geplant")
+
                     }
                 }
             }
@@ -154,6 +156,5 @@ Rectangle {
             }
         }
         delegate: PatientDelegate {}
-
     }
 }
